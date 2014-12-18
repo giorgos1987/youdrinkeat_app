@@ -1,0 +1,76 @@
+   ctx.save();
+			var MaxWidth = 300;// window.innerHeight;//300;//
+			var MaxHeight = 300;// window.innerWidth;//300;//
+			var c;//=   wrapText(ctx, wtrm_txt, -60, -100, 200, 40);
+            var cw;
+            var ct;
+            function drawRotated(degrees){
+			    ctx.clearRect(0,0,MaxWidth,MaxHeight);
+			    var flip_water = "no";
+                  flip_water =   document.getElementById("flip-1").value;
+                
+                var flip_text = "no";
+                flip_text = document.getElementById("flip-0").value;
+                 
+		
+			    var temp = MaxWidth;
+			    MaxWidth = MaxHeight;
+			    MaxHeight = temp;
+			    
+			  //  var wT = -(MaxWidth/2) + (MaxWidth/2)*0.2; 
+			   // var can = $("#canvasid");
+			    
+			   // can.attr("width",MaxWidth).attr("height",MaxHeight);
+			
+                
+                
+			    ctx.translate(MaxWidth/2,MaxHeight/2);
+			    ctx.rotate(degrees*Math.PI/180);
+			    if(degrees<0) var remainder = 360-(Math.abs(degrees)%360);   
+			    else var remainder = degrees%360;
+			    
+			    console.log(degrees);
+			    switch(remainder) {
+			        case 90:
+			        case 270:
+			       
+			         ctx.drawImage(imageObj,-MaxWidth/2,-MaxHeight/2,MaxWidth,6*MaxHeight);
+                        
+                      if(flip_text == "on"){
+                         // ctx.save();
+                        //   ctx.translate(-MaxWidth/2,-MaxHeight/2);
+			             ctx.font = '33pt san-serif';
+			             ctx.fillStyle = '#8C9EAE';	
+                          
+                         // ctx.strokeStyle = "#8C9EAE";
+			             wrapText(ctx, wtrm_txt,-120,103,300,40);//wT, 50, 300, 40);// 30,270,300,40);//
+                      //    ctx.restore();
+                      //    ctx.restore();
+                    //     ctx.translate(MaxWidth/2,MaxHeight/2);
+                       } 
+                        if(flip_water == "on"){
+                            //ctx.drawImage(watermarkObj, -MaxWidth/2, -MaxHeight/2);
+                            ctx.drawImage(watermarkObj, -145, -145);
+                        }
+			            break;
+			        case 0:
+			        case 180:            
+			            ctx.drawImage(imageObj,-MaxWidth/2,-MaxHeight/2,MaxWidth,MaxHeight);
+                        if(flip_text == "on"){
+                            ctx.font = '33pt san-serif';
+                            ctx.fillStyle = '#8C9EAE';
+                           // wrapText(ctx, wtrm_txt, wT, 50, 300, 40);
+                            
+                       //   ctx.strokeStyle = "297ccf";
+                            wrapText(ctx, wtrm_txt,-120,103,290,33);
+                        }
+                        if(flip_water == "on" ){
+			                // ctx.drawImage(watermarkObj, 0, 0);
+                             ctx.drawImage(watermarkObj, -145, -145);
+                        }
+			            break;          
+			    }
+			    ctx.restore();
+			}
+			         
+			            

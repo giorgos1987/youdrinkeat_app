@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+	<!--   
+   You may substitute jQuery for the App Framework selector library.
+   See http://app-framework-software.intel.com/documentation.php#afui/afui_jquery
+  -->
+	<!-- content goes here-->
+	<!-- content goes here-->
+	<!-- content goes here-->
+	<!-- content goes here-->
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="app_framework/css/af.ui.min.css">
+		<link rel="stylesheet" type="text/css" href="app_framework/css/icons.min.css">
+		<link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
+		<title>youDrinkEat</title>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta http-equiv="Pragma" content="no-cache">
+		<style type="text/css">
+			/* Prevent copy paste for all elements except text fields */
+			    			*  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
+			    			input, textarea  { -webkit-user-select:text; }
+			      canvas {
+					  vertical-align: top;
+					  display: block;
+					  overflow: auto;
+				     }
+		</style>
+		<script src="intelxdk.js"></script>
+		<script src="cordova.js"></script>
+		<script src="xhr.js"></script>
+		<script type="application/javascript" src="app_framework/appframework.js"></script>
+		<script type="application/javascript" src="app_framework/appframework.ui.js"></script>
+
+		<script type="application/javascript" src="js/jquery.min.js"></script>
+		<script type="application/javascript" src="sidebar/js/jquery.event.move.js"></script>
+		<script type="application/javascript" src="sidebar/js/jquery.event.swipe.js"></script>
+		<script type="application/javascript" src="sidebar/js/sidebar.js"></script>
+		<script type="application/javascript" src="sidebar/js/swipe.js"></script>
+		<script type="application/javascript" src="js/index_user_scripts.js"></script>
+		<script src="js/main.js" type="text/javascript"></script>
+		<script type="application/javascript" src="js/facebook.js"></script>
+		<script src="js/random.js" type="text/javascript"></script>
+	</head>
+
+	<body id="afui" class="ios7">
+
+		<!-- content goes here-->
+		<div class="uwrap" id="content">
+
+			<div class="upage panel" id="main" data-header="af-header-0" data-footer="af-footer-0">
+				<div class="upage-outer">
+					<header class="container-group bg-color inner-element uib_w_4 my_headerst" data-uib="app_framework/header" data-ver="0" id="af-header-0">
+						<h1><font color="#287BCE">youDrinkEat</font></h1>
+						<div class="widget-container wrapping-col single-centered">
+						</div>
+						<div class="widget-container content-area horiz-area wrapping-col left with-back">
+							<!--<a class="button" id="backButton">Back</a>-->
+						</div>
+						<div class="widget-container content-area horiz-area wrapping-col right">
+							<a class="button widget uib_w_4 d-margins icon info" data-uib="app_framework/button" data-ver="0" id="sidebar_btn"></a>
+						</div>
+					</header>
+
+					<div class="upage-content" id="mainsub">
+
+						<div class="grid grid-pad urow uib_row_2 row-height-2" data-uib="layout/row" data-ver="0">
+							<div class="col uib_col_2 col-0_12-12" data-uib="layout/col" data-ver="0">
+								<div class="widget-container content-area wrapping-col left">
+									<!---->
+
+									<div class="widget uib_w_4   d-margins scale-image" data-uib="media/img" data-ver="0">
+										<figure class="figure-align">
+											<!--  <script>      intel.xdk.camera.takePicture(80, true, "jpg");</script>-->
+											<img id="photo" style=" width:300px; height:300px;  top:0px; left:0px;  " class="active" src="images/tap1.png">
+
+											<figcaption data-position="bottom"></figcaption>
+										</figure>
+									</div>
+
+									<span class="uib_shim"></span>
+								</div>
+
+							</div>
+
+							<span class="uib_shim"></span>
+						</div>
+
+					</div>
+					<!-- /upage-content -->
+
+					<!-- /----------------End-----Side Bar -->
+					<footer class="inner-element uib_w_3 my_headerst" data-uib="app_framework/footer" data-ver="0" id="af-footer-0">
+						<a class="icon home" href="#mainpage">Home</a>
+						<a class="icon camera" href="#share" onclick="takepicture()">Shot</a>
+						<!--<a class="icon settings" href="#settings">Settings</a>-->
+						<a class="icon upload" href="#share">Share</a>
+					</footer>
+				</div>
+				<!-- /upage-outer -->
+
+			</div>
+			<!-- /upage -->
+
+			<!--how to --->
+			<div class="panel" id="howto" data-header="af-header-0" data-footer="af-footer-0">
+				<iframe src="//slides.com/giorgospapoutsis/deck/embed?style=light" height="420" scrolling="no" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>
+			</div>
+			<!--end  how to --->
+
+			<!--start settings-->
+			<div class="upage panel" id="mainpage" data-header="af-header-0" data-footer="af-footer-0" selected="true">
+
+				<h2 align="center"><font color="#9ea9b5">Select your Place and  Logo</font></h2>
+				<div class="grid grid-pad urow uib_row_5 row-height-5" data-uib="layout/row" data-ver="0">
+					<div class="col uib_col_5 col-0_12-12" data-uib="layout/col" data-ver="0">
+						<div class="widget-container content-area vertical-col">
+							<div class="table-thing with-label widget uib_w_12 d-margins" data-uib="app_framework/select" data-ver="0">
+
+								<div class="table-thing with-label widget uib_w_33 d-margins" data-uib="app_framework/select" data-ver="0">
+									<select class="wide-control" id="names" onchange="text(this.options[this.selectedIndex].text)">
+										<option value="0" selected="true">select place</option>
+									</select>
+
+								</div>
+
+								<!--<input type="range" class="wide-control" id="sliderBar" min="0" max="100" step="1" value="30" onchange="showValue(this.value);">
+								<div id="result" style="height:20px;width:20px;border:0px solid #999">
+
+								</div>-->
+
+								<!--	<select class="wide-control" id="filterid" onchange="filter(this.value);">
+									<option value="sinCity" selected="true" class="active">sinCity</option>
+									<option value="lomo">lomo</option>
+									<option value="clarity">clarity</option>
+								</select>
+								<select class="wide-control" id="color" onchange="color(this.value)">
+									<option value="white" selected="true">select color</option>
+									<option value="red">red</option>
+									<option value="blue">blue</option>
+									<option value="yellow">yellow</option>
+									<option value="grey">grey</option>
+								</select>-->
+
+								<!--<label class="narrow-control label-inline">Define Watermark</label>-->
+
+								<div class="table-thing with-label widget uib_w_32 d-margins" data-uib="app_framework/flip_switch" data-ver="0">
+									<select class="wide-control" id="watermar" onchange="setPreview(this.value);">
+										<option value="0" selected="true">select watermark</option>
+										<option value="images/youdrinkeat200.png">youdrinkeat</option>
+										<option value="images/yummie.png">yummie</option>
+										<option value="images/sweetfl.png">sweet flour</option>
+										<option value="images/spatulove.png">spatu love</option>
+										<option value="images/grillmenu.png">grill menu</option>
+										<option value="images/restaurant.png">restaurant</option>
+										<option value="images/seafoodmenu.png">seafood menu</option>
+										<option value="images/topchef.png">top chef</option>
+										<option value="http://www.patrick-wied.at/static/watermarkjs/demos/img/watermark.png">drop</option>
+									</select>
+								</div>
+
+								<!--	<script type="text/javascript" >
+$.getJSON('http://youdrinkeat.com/api/apiyoudrinkeat.json',function(wtrmrks) {
+			                $.each(wtrmrks.response, function(i,response){
+			          cont = "<option  value='"+i+"'>"+ response.display +"</option>";
+			          $(cont).appendTo("#watermar");});});
+			
+								
+								</script>-->
+
+								<!--<div class="preview"></div>-->
+								<img id="wtr1" width="100">
+
+							</div><span class="uib_shim"></span>
+						</div>
+					</div>
+					<span class="uib_shim"></span>
+				</div>
+				<!--sidebar-->
+
+				<div class="inner-element uib_w_1 uib_sidebar leftbar bar-bg thumb-bg bar-gutter" data-uib="layout/left_sidebar" data-ver="0" data-anim="{'style':'overlap', 'v':200, 'side':'left'}">
+					<div class="sidebar-content">
+
+						<div class="grid grid-pad urow uib_row_1 row-height-1" data-uib="layout/row" data-ver="0">
+							<div class="col uib_col_1 col-0_12-12" data-uib="layout/col" data-ver="0">
+								<div class="widget-container content-area vertical-col">
+									<div class="widget uib_w_28 scale-image d-margins" data-uib="media/img" data-ver="0">
+										<figure class="figure-align">
+											<img src="images/logo_a.png" style="top:30px; ">
+
+											<figcaption data-position="bottom"></figcaption>
+										</figure>
+									</div>
+									<!--<div class="button-grouped widget uib_w_29 d-margins vertical" data-uib="app_framework/button_group" data-ver="0"><a class="button widget uib_w_30 d-margins icon user" data-uib="app_framework/button" data-ver="0" style="border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;">Profile</a>
+											<a class="button widget uib_w_31 d-margins icon settings" data-uib="app_framework/button" data-ver="0">Login</a>-->
+									<a href="#howto" class="button widget uib_w_32 d-margins icon tv" data-uib="app_framework/button" data-ver="0" style="border-top-right-radius: 0px; border-top-left-radius: 0px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(102, 102, 102);">How To Use</a>
+
+									<!--<a class="button widget uib_w_32 d-margins icon star" data-uib="app_framework/button" data-ver="0" style="border-top-right-radius: 0px; border-top-left-radius: 0px; border-bottom-right-radius: 6px; border-bottom-left-radius: 6px; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(102, 102, 102);">Rate the App</a>-->
+								</div>
+								<div class="widget uib_w_28 scale-image d-margins" data-uib="media/img" data-ver="0">
+									<figure class="figure-align">
+										<a href="https://www.facebook.com/Yourdrinkeat">
+											<img src="images/facebook_funpage30.jpg">
+											<!---->
+										</a>
+
+										<figcaption data-position="bottom"></figcaption>
+									</figure>
+								</div>
+								<span class="uib_shim"></span>
+							</div>
+						</div>
+						<span class="uib_shim"></span>
+					</div>
+						<span class="uib_shim"></span>
+				</div>
+				<!--endsidebar-->
+			</div>
+
+		</div>
+		<script>
+			navigator.geolocation.getCurrentPosition( function(data) {
+					      var lat = data['coords']['latitude'];
+					      var lng = data['coords']['longitude'];
+					     // var  lat = "38.24664";
+					     // var  lng = "21.73457";					
+				$.getJSON('https://api.foursquare.com/v2/venues/search?client_id=5JCQU0YRIMHEVCV2PZ03A0M45VZY1RMCCHO1AESIS02HCOUG&client_secret=*********&v=20130815&ll='+lat+','+lng, function(data) {
+			$.each(data.response.venues, function(i,venues){
+			content = "<option class='sel_col' value='"+i+"'>"+ venues.name +"</option>";
+			$(content).appendTo("#names"); 
+			});
+					                            });/////json ends
+					                             });//ends geolocation
+		</script>
+		<!--end settings-->
+		<div class="panel" id="share" data-header="af-header-0" data-footer="af-footer-0">
+			<p id="facebookStatus"></p>
+			<p id="uploadStatus"></p>
+			<!--<a id="qrcode" class="button widget uib_w_30 d-margins icon user" data-uib="app_framework/button" data-ver="0" style="border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;" onclick="getQRcode();">qr code</a>-->
+			<a id="FBlogin" class="button widget uib_w_30 d-margins icon user" data-uib="app_framework/button" data-ver="0" style="border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;" onclick="logInToFacebook();">Login</a>
+			<a id="sharefcb" class="button widget uib_w_30 d-margins icon user" data-uib="app_framework/button" data-ver="0" style="border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;" onclick="postToWall()">Share</a>
+			<a id="logout" class="button widget uib_w_30 d-margins icon user" data-uib="app_framework/button" data-ver="0" style="border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;" onclick="logOutOfFacebook();">LogOut</a>
+			<a id="upload" class="button widget uib_w_30 d-margins icon user" data-uib="app_framework/button" data-ver="0" style="border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;" onclick="upload();">Upload</a>
+			<!--<a class="button widget uib_w_30 d-margins icon user" data-uib="app_framework/button" data-ver="0" style="border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;" id="uploadbutton">UploadToParse</a>-->
+			<a class="button widget uib_w_30 d-margins" data-uib="app_framework/button" data-ver="0" style="border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;" id="clockwise">Rotate right</a>
+			<!--<a class="button widget uib_w_30 d-margins icon user" data-uib="app_framework/button" data-ver="0" style="border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;" id="counterclockwise" >Rotate left</a>-->
+			<div class="widget-container content-area wrapping-col center">
+
+				<canvas id="canvasid" class="myclass" style=" max-width:300px; min-height:300px; z-index:100;  top:0px; left:0px;">
+
+				</canvas>
+
+				<span class="uib_shim"></span>
+			</div>
+
+		</div>
+
+		<script type="application/javascript">
+			var  imgP =  document.getElementById("wtr1");			     
+            watermarkObj.onchange =  document.getElementById("watermar");//new Image();
+			var pathWatermark;// = e.options[e.selectedIndex].value;
+			 //   imgP.setAttribute("src",strUser);
+			 function setPreview(pathWater){
+                                                    
+			   // var strUser = e.options[e.selectedIndex].value;
+			    imgP.setAttribute("src",pathWater);//imageQRsrc);//27/5
+   				watermarkObj.src  = pathWater;//imageQRsrc;//27/5
+	}
+		</script>
+
+		<script type="application/javascript">
+			var imageObj = document.getElementById("photo");      
+			        
+			          canvas = document.getElementById('canvasid');
+			            //ctx = canvas.getContext("2d");
+			       if (canvas.getContext) {
+			          ctx = canvas.getContext("2d"); 
+			         
+			         // window.addEventListener('intel.xdk.device.orientation.change', resizeCanvas, false);
+			         // resizeCanvas();
+			        }
+			    
+			            var angleInDegrees=0;
+			            var watermarkObj = new Image();
+			            var	wtrm_txt =   $("#names option:selected").text();  
+			            
+			          //  canvas.width= canvas.width;
+			           // canvas.attr("width", 300).attr("height",600); 
+			          
+			           
+			            
+			            imageObj.onload=function(){ 
+			               wtrm_txt =   $("#names option:selected").text();   
+			                
+			       ///////////////////      canvas.width= canvas.width;    
+			
+			            //  // Resize original canvas
+	       canvas.width = 300;//window.innerHeight;	/////////////////////////////5-6-2014	    
+			           canvas.height = 300;//window.innerWidth;  ////////////////////////////5-6-2014	
+			          
+				                     draw();   
+                            
+              
+			            }
+			          
+			            
+			            
+			            function draw(){
+			           //////////// ctx.drawImage(imageObj,0,0,300 ,2*300);
+                            angleInDegrees = 90;
+			                 drawRotated(angleInDegrees);
+			             
+			              //  var c=   wrapText(ctx, wtrm_txt, 30, 80, 300, 40);
+			                 wtrm_txt =   $("#names option:selected").text();   
+			               // ctx.font = '33pt san-serif';
+			              //  ctx.fillStyle = '#297ccf';
+			               
+			            }
+			          
+			         
+			        
+			            
+			             
+			            
+			            $("#clockwise").click(function(){ 
+			                angleInDegrees+=90;
+			                drawRotated(angleInDegrees);
+			            
+			            });
+			            $("#counterclockwise").click(function(){ 
+			                angleInDegrees-=90;
+			                drawRotated(angleInDegrees);
+			              
+			            });
+			            
+			   ctx.save();
+			var MaxWidth = 300;// window.innerHeight;//300;//
+			var MaxHeight = 300;// window.innerWidth;//300;//
+			var c;//=   wrapText(ctx, wtrm_txt, -60, -100, 200, 40);
+            var cw;
+            var ct;
+            function drawRotated(degrees){
+			    ctx.clearRect(0,0,MaxWidth,MaxHeight);
+			    var flip_water = "0";//"no";
+                flip_water =  document.getElementById("watermar").value;
+                
+                var flip_text = "0";//"no";
+                flip_text = document.getElementById("names").value;
+                 
+			  // var image = new Image();
+			   // image = imageObj;
+			    var temp = MaxWidth;
+			    MaxWidth = MaxHeight;
+			    MaxHeight = temp;
+			    
+			    var wT = -(MaxWidth/2) + (MaxWidth/2)*0.2; 
+			    var can = $("#canvasid");
+			    
+			    can.attr("width",MaxWidth).attr("height",MaxHeight);
+			
+			    ctx.translate(MaxWidth/2,MaxHeight/2);
+			    ctx.rotate(degrees*Math.PI/180);
+			    if(degrees<0) var remainder = 360-(Math.abs(degrees)%360);   
+			    else var remainder = degrees%360;
+			    
+			    console.log(degrees);
+			    switch(remainder) {
+			        case 90:
+			        case 270:
+			          
+			           ctx.drawImage(imageObj,-MaxWidth/2,-MaxHeight/2,MaxWidth,4*MaxHeight);
+                        
+                      if(flip_text != "0"){
+			             ctx.font = '33pt san-serif';
+			             ctx.fillStyle = '#8C9EAE';	
+			             wrapText(ctx, wtrm_txt,-120,103,300,40);
+       
+                       } 
+                        if(flip_water != "0"){
+                            //ctx.drawImage(watermarkObj, -MaxWidth/2, -MaxHeight/2);
+                            ctx.drawImage(watermarkObj, -145, -145);
+                        }
+			            break;
+			        case 0:
+			        case 180:            
+			            ctx.drawImage(imageObj,-MaxWidth/2,-MaxHeight/2,MaxWidth,4*MaxHeight);
+                        if(flip_text != "0"){
+                            ctx.font = '33pt san-serif';
+                            ctx.fillStyle = '#8C9EAE';
+                           // wrapText(ctx, wtrm_txt, wT, 50, 300, 40);
+                            
+                          ctx.strokeStyle = "8C9EAE";
+                            wrapText(ctx, wtrm_txt,-120,103,290,33);
+                        }
+                        if(flip_water != "0" ){
+			                // ctx.drawImage(watermarkObj, 0, 0);
+                             ctx.drawImage(watermarkObj, -145, -145);
+                        }
+			            break;          
+			    }
+			    ctx.restore();
+			}
+			         
+		            
+			            
+			     function wrapText(context, text, x, y, maxWidth, lineHeight) {
+			        var words = text.split(' ');
+			        var line = '';
+			         
+			        for(var n = 0; n < words.length; n++) {
+			          var testLine = line + words[n] + ' ';
+			          var metrics = context.measureText(testLine);
+			          var testWidth = metrics.width;
+			          if (testWidth > maxWidth && n > 0) {
+			            context.fillText(line, x, y);//
+                      //     context.strokeText(line, x, y);
+			            line = words[n] + ' ';
+			            y += lineHeight;
+			          }
+			          else {
+			            line = testLine;
+			          }
+			        }
+			        context.fillText(line, x, y);
+                  //  context.strokeText(line, x, y); 
+			      }
+		</script>
+
+		<!-- /uwrap -->
+	</body>
+
+</html>

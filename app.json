@@ -1,0 +1,17 @@
+{
+	"reponame":"",
+	"title":"youDrinkEat",
+	"abbr":"youDrinkEat",
+	"tooltip":"[App Designer Ready] youDrinkEat App",
+	"description":"[App Designer Ready] A simple app that shows various App Framework UI components that can be used",
+	"articleurl":"",
+    	"screenshotUrl":"",
+    	"iconUrl":"",
+	"highlights":["App Designer", "App Framework"],
+    	"keywords":["App Designer", "App Framework"],
+	"visible": "true",
+	"apppreview":"true",
+	"type":"",
+	"appname":"demo.afkitchensink",
+	"relname":"4.0.0"
+}
